@@ -131,6 +131,23 @@
                 left: 15px;
             }
         }
+        .metric-item {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4D96FF;
+        }
+        .metric-label {
+            font-size: 1rem;
+            color: #475569;
+            margin-top: 8px;
+        }
     </style>
 </head>
 <body>
@@ -139,12 +156,12 @@
         
         <header class="text-center my-12">
             <h1 class="text-4xl md:text-5xl font-bold text-slate-800 mb-4">Algeria's Digital Pulse: 2025 Electronics & Accessory Market</h1>
-            <p class="text-lg text-slate-600 max-w-3xl mx-auto">An infographic snapshot of key market dynamics, consumer behaviors, and top product trends shaping Algeria's rapidly evolving e-commerce landscape.</p>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto">An in-depth infographic snapshot of key market dynamics, evolving consumer behaviors, and top product trends shaping Algeria's rapidly expanding e-commerce landscape, positioned as a significant player in the MENA region.</p>
         </header>
 
         <section id="market-overview" class="mb-16">
             <h2 class="section-title">Market at a Glance: Key Growth Indicators</h2>
-            <p class="section-subtitle">Algeria's digital economy is on a steep upward trajectory, marked by impressive growth and high mobile adoption, setting the stage for a thriving e-commerce ecosystem.</p>
+            <p class="section-subtitle">Algeria's digital economy is on a steep upward trajectory, marked by impressive growth and high mobile adoption, setting the stage for a thriving e-commerce ecosystem with substantial untapped potential.</p>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
                 <div class="kpi-card">
                     <div class="kpi-value">$799M</div>
@@ -152,7 +169,7 @@
                 </div>
                 <div class="kpi-card">
                     <div class="kpi-value">15-20%</div>
-                    <div class="kpi-label">Projected Annual Growth</div>
+                    <div class="kpi-label">Projected Annual Growth (2025)</div>
                 </div>
                 <div class="kpi-card">
                     <div class="kpi-value">112%</div>
@@ -164,21 +181,55 @@
                 </div>
             </div>
         </section>
+
+        <section id="digital-connectivity" class="mb-16">
+            <h2 class="section-title">Algeria's Digital Connectivity Landscape</h2>
+            <p class="section-subtitle">A robust and expanding digital infrastructure underpins Algeria's e-commerce growth, with widespread internet access and high mobile penetration driving digital engagement across the population.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="metric-item">
+                    <div class="metric-value">76.9%</div>
+                    <div class="metric-label">Internet Usage (2023)</div>
+                    <p class="text-sm text-slate-600 mt-2">A broad and increasingly connected population, indicating a strong foundation for digital services.</p>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value">104%</div>
+                    <div class="metric-label">Mobile Internet Penetration</div>
+                    <p class="text-sm text-slate-600 mt-2">Mobile devices are the primary gateway to online content and services for the majority of Algerians.</p>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value">23%</div>
+                    <div class="metric-label">FTTH Adoption (Mid-2024)</div>
+                    <p class="text-sm text-slate-600 mt-2">Significant growth in fiber-to-the-home services enhances fixed internet quality and reliability.</p>
+                </div>
+            </div>
+        </section>
         
         <section id="mobile-dominance" class="mb-16">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <div class="content-card">
                     <h3 class="text-2xl font-bold text-slate-700 mb-4">Mobile Vendor Market Share</h3>
-                    <p class="text-slate-600 mb-6">The mobile accessory market is directly influenced by the popularity of smartphone brands. Samsung leads the pack, but a diverse ecosystem of brands creates broad demand for a wide range of products.</p>
+                    <p class="text-slate-600 mb-6">The demand for phone accessories is intrinsically linked to the prevalence of compatible devices. Samsung leads the market, but a diverse ecosystem of brands like Xiaomi, Oppo, and Realme ensures broad accessory demand.</p>
                     <div class="chart-container">
                         <canvas id="marketShareChart"></canvas>
                     </div>
                 </div>
                 <div class="content-card">
                     <h3 class="text-2xl font-bold text-slate-700 mb-4">Top 10 Trending Products</h3>
-                    <p class="text-slate-600 mb-6">Consumer demand focuses on protection, power, and entertainment. Accessories that enhance the mobile experience are the clear front-runners in Algeria's current market.</p>
+                    <p class="text-slate-600 mb-6">Consumer demand is heavily focused on device protection, portable power, and enhanced entertainment. These accessories are clear front-runners in Algeria's current market, reflecting daily user needs.</p>
                      <div class="chart-container" style="height: 500px;">
                         <canvas id="topProductsChart"></canvas>
+                    </div>
+                    <div class="mt-8 space-y-4 text-sm text-slate-700">
+                        <p><strong class="text-[#4D96FF]">1. Rugged & Personalized Phone Cases:</strong> Essential for safeguarding valuable smartphones while allowing for personal and cultural expression.</p>
+                        <p><strong class="text-[#FF6B6B]">2. Tempered Glass Screen Protectors:</strong> A crucial, low-cost investment for screen longevity, protecting against scratches and impacts.</p>
+                        <p><strong class="text-[#FFD166]">3. High-Capacity Power Banks (10,000mAh+):</strong> Indispensable for extended mobile usage, especially with demanding apps and the upcoming 5G network.</p>
+                        <p><strong class="text-[#06D6A0]">4. Fast Charging Adapters (45W, 65W GaN, 120W):</strong> Driven by the desire for minimal device downtime and efficient power delivery.</p>
+                        <p><strong class="text-[#BDB2FF]">5. True Wireless Stereo (TWS) Earbuds:</strong> Offer wireless convenience, portability, and an immersive audio experience for a mobile-first lifestyle.</p>
+                        <p><strong class="text-[#74C69D]">6. Gaming Headsets:</strong> Reflect a significant and growing segment of consumers investing in enhanced audio and communication for gaming.</p>
+                        <p><strong class="text-[#F4A261]">7. Smart Trackers (e.g., AirTag, SmartTag):</strong> Address a growing need for personal asset security and convenience in locating lost items.</p>
+                        <p><strong class="text-[#4D96FF]">8. Portable Bluetooth Speakers:</strong> Cater to shared listening experiences and on-the-go entertainment, offering versatile wireless audio.</p>
+                        <p><strong class="text-[#FF6B6B]">9. Android TV Sticks/Smart Boxes (4K):</strong> Provide an affordable way to upgrade home entertainment systems with streaming capabilities.</p>
+                        <p><strong class="text-[#FFD166]">10. USB-C Multi-purpose Cables & Adapters:</strong> Crucial for ensuring compatibility, faster charging, and data transfer across a variety of modern and legacy devices.</p>
                     </div>
                 </div>
             </div>
@@ -186,12 +237,12 @@
 
         <section id="consumer-behavior" class="mb-16">
              <h2 class="section-title">Understanding the Algerian Consumer</h2>
-             <p class="section-subtitle">Key drivers reveal a consumer base that is practical, value-conscious, and increasingly interested in technology that simplifies and enhances their digital lifestyle.</p>
+             <p class="section-subtitle">Key drivers reveal a consumer base that is practical, value-conscious, and increasingly interested in technology that simplifies and enhances their digital lifestyle, with a strong preference for secure payment methods.</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="content-card col-span-1 md:col-span-1 flex flex-col items-center justify-center text-center">
                     <div class="text-7xl font-bold text-[#FF6B6B]">90%</div>
                     <h3 class="text-xl font-semibold mt-2">Prefer Cash on Delivery</h3>
-                    <p class="mt-2 text-slate-600">Trust and the ability to inspect goods before payment remain paramount, making robust logistics and COD options essential for e-commerce success.</p>
+                    <p class="mt-2 text-slate-600">The overwhelming preference for COD highlights the importance of trust and the ability to inspect goods before payment. This necessitates robust logistics and transparent delivery processes for e-commerce success in Algeria.</p>
                 </div>
                 <div class="content-card md:col-span-2">
                     <h3 class="text-2xl font-bold text-slate-700 mb-6">Key Purchase Drivers</h3>
@@ -199,29 +250,36 @@
                         <div class="flex items-start">
                             <div class="text-xl text-[#4D96FF] mr-4">📱</div>
                             <div>
-                                <h4 class="font-semibold text-slate-800">High Mobile Usage</h4>
-                                <p class="text-slate-600">With 112% penetration, the mobile phone is the central hub of digital life, driving demand for all related accessories.</p>
+                                <h4 class="font-semibold text-slate-800">High Mobile Usage & Accessibility</h4>
+                                <p class="text-slate-600">With 112% mobile phone penetration and affordable mobile internet, the smartphone is central to daily life, driving demand for all related accessories that enhance its utility.</p>
                             </div>
                         </div>
                         <div class="flex items-start">
                            <div class="text-xl text-[#06D6A0] mr-4">🛡️</div>
                             <div>
-                                <h4 class="font-semibold text-slate-800">Device Protection</h4>
-                                <p class="text-slate-600">Consumers prioritize safeguarding their smartphone investments with durable cases and screen protectors.</p>
+                                <h4 class="font-semibold text-slate-800">Device Protection & Longevity</h4>
+                                <p class="text-slate-600">Consumers prioritize safeguarding their valuable smartphone investments from damage, reflecting a practical approach to maintaining device functionality and resale value.</p>
                             </div>
                         </div>
                         <div class="flex items-start">
                             <div class="text-xl text-[#FFD166] mr-4">⚡️</div>
                             <div>
-                                <h4 class="font-semibold text-slate-800">Power & Convenience</h4>
-                                <p class="text-slate-600">Demand for fast chargers and high-capacity power banks is fueled by a need for efficiency and uninterrupted use.</p>
+                                <h4 class="font-semibold text-slate-800">Power, Efficiency & Convenience</h4>
+                                <p class="text-slate-600">The demand for fast chargers and high-capacity power banks stems from a need for uninterrupted mobile use and efficient power delivery in a fast-paced digital environment.</p>
                             </div>
                         </div>
                          <div class="flex items-start">
                             <div class="text-xl text-[#BDB2FF] mr-4">🎨</div>
                             <div>
-                                <h4 class="font-semibold text-slate-800">Personalization</h4>
-                                <p class="text-slate-600">A growing desire for products that reflect personal style and cultural identity, especially with phone cases.</p>
+                                <h4 class="font-semibold text-slate-800">Personalization & Cultural Identity</h4>
+                                <p class="text-slate-600">A growing desire for accessories that reflect personal style and cultural identity (e.g., cases with local designs) adds an emotional dimension to functional purchases.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-xl text-[#74C69D] mr-4">🎮</div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800">Entertainment & Leisure</h4>
+                                <p class="text-slate-600">The rise of gaming headsets and smart TV devices indicates a burgeoning interest in enhanced home entertainment and leisure activities, aligning with broader e-commerce trends.</p>
                             </div>
                         </div>
                     </div>
@@ -229,26 +287,32 @@
             </div>
         </section>
 
-        <section id="future-outlook" class="mb-12">
-            <h2 class="section-title">The Road to 5G and Beyond</h2>
-            <p class="section-subtitle">Government initiatives and infrastructure upgrades are paving the way for a more sophisticated digital future, which will create new opportunities and shift consumer demand.</p>
+        <section id="strategic-initiatives" class="mb-16">
+            <h2 class="section-title">Strategic Initiatives: Fueling Future Growth</h2>
+            <p class="section-subtitle">Governmental efforts and infrastructure upgrades are actively shaping Algeria's digital future, creating new opportunities and driving a shift towards more advanced technological adoption.</p>
             <div class="timeline">
                 <div class="timeline-container left">
                     <div class="timeline-content">
-                        <h3 class="font-bold text-lg text-slate-800">Now: Digital Transformation Strategy</h3>
-                        <p class="text-sm text-slate-600">Algeria is actively implementing its National Digital Transformation Strategy, aiming to train 500,000 ICT specialists by 2030 and build a robust local tech ecosystem.</p>
+                        <h3 class="font-bold text-lg text-slate-800">Ongoing: National Digital Transformation Strategy (SNTN)</h3>
+                        <p class="text-sm text-slate-600">Algeria is committed to training 500,000 ICT specialists by 2030 and reducing brain drain by 40%. This builds a skilled workforce and fosters local innovation.</p>
                     </div>
                 </div>
                 <div class="timeline-container right">
                     <div class="timeline-content">
-                        <h3 class="font-bold text-lg text-slate-800">Mid-2025: 5G Launch</h3>
-                        <p class="text-sm text-slate-600">The official launch of 5G services is set for Q3 2025, starting in major urban and industrial areas. This will unlock new possibilities for high-speed connectivity.</p>
+                        <h3 class="font-bold text-lg text-slate-800">May-June 2025: 5G Technology Tender & Provisional Licenses</h3>
+                        <p class="text-sm text-slate-600">The tender process for 5G licenses concluded, with provisional licenses anticipated by early July 2025, marking a critical step towards next-generation connectivity.</p>
                     </div>
                 </div>
                 <div class="timeline-container left">
                     <div class="timeline-content">
-                        <h3 class="font-bold text-lg text-slate-800">Future: Evolving Consumer Demand</h3>
-                        <p class="text-sm text-slate-600">As 5G becomes widespread, expect a surge in demand for 5G-compatible devices, high-performance accessories, and IoT products for a more connected lifestyle.</p>
+                        <h3 class="font-bold text-lg text-slate-800">Q3 2025: Official 5G Service Launch</h3>
+                        <p class="text-sm text-slate-600">5G services are set to officially launch, initially prioritizing densely populated urban areas and key industrial zones to drive economic growth and digital sovereignty.</p>
+                    </div>
+                </div>
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <h3 class="font-bold text-lg text-slate-800">Future Outlook: Evolving Consumer Demand</h3>
+                        <p class="text-sm text-slate-600">As 5G becomes widespread and digital literacy increases, expect a surge in demand for 5G-compatible devices, high-performance accessories, and advanced IoT products for a truly connected lifestyle.</p>
                     </div>
                 </div>
             </div>
@@ -312,10 +376,10 @@
             new Chart(marketShareCtx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Samsung', 'Xiaomi', 'Oppo', 'Realme', 'Apple', 'Others'],
+                    labels: ['Samsung', 'Xiaomi', 'Oppo', 'Realme', 'Apple', 'Unknown', 'Others'],
                     datasets: [{
                         label: 'Market Share',
-                        data: [30.05, 20.78, 13.16, 10.3, 8.86, 6.85],
+                        data: [30.05, 20.78, 13.16, 10.3, 8.86, 4.91, 11.94], // Adjusted 'Others' to sum to 100% with Unknown
                         backgroundColor: vibrantPalette,
                         borderColor: '#ffffff',
                         borderWidth: 2,
