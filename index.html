@@ -3,525 +3,408 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BinYedik - Your Online Shopping Destination</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Algeria's Electronics Market: Trends & Insights 2025</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Archivo Black and Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Customizing Tailwind's default colors with the provided palette */
-        :root {
-            --color-dark-blue: #085096;
-            --color-medium-blue: #0A64BC;
-            --color-lighter-blue: #3B83C9;
-            --color-light-blue: #9DC1E4;
-            --color-very-light-blue: #CEEOF2;
-        }
-
-        .bg-dark-blue { background-color: var(--color-dark-blue); }
-        .bg-medium-blue { background-color: var(--color-medium-blue); }
-        .bg-lighter-blue { background-color: var(--color-lighter-blue); }
-        .bg-light-blue { background-color: var(--color-light-blue); }
-        .bg-very-light-blue { background-color: var(--color-very-light-blue); }
-
-        .text-dark-blue { color: var(--color-dark-blue); }
-        .text-medium-blue { color: var(--color-medium-blue); }
-        .text-lighter-blue { color: var(--color-lighter-blue); }
-        .text-light-blue { color: var(--color-light-blue); }
-
-        .border-dark-blue { border-color: var(--color-dark-blue); }
-        .border-medium-blue { border-color: var(--color-medium-blue); }
-
-        /* Custom font family - Poppins for general text */
         body {
-            font-family: 'Poppins', sans-serif; /* Default font for most text */
-            background-color: var(--color-very-light-blue); /* Overall light background */
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
         }
-
-        /* Specific font for BinYedik logo */
-        .font-biniyedik {
-            font-family: 'Archivo Black', sans-serif;
-        }
-
-        /* Smooth scroll for anchor links */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Custom button styling */
-        .btn-primary {
-            @apply bg-dark-blue text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-lighter-blue transition duration-300 ease-in-out;
-        }
-
-        .product-card {
-            @apply bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl;
-        }
-
-        .product-card-img {
-            width: 100%;
-            height: 200px; /* Fixed height for product images */
-            object-fit: cover; /* Ensure images cover the area */
-        }
-
-        /* Modal specific styles */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1000; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+        .kpi-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
         }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 30px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 700px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        .kpi-value {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1;
+            color: #4D96FF;
+        }
+        .kpi-label {
+            font-size: 1rem;
+            color: #475569; /* slate-600 */
+            margin-top: 8px;
+        }
+        .chart-container {
             position: relative;
-            animation-name: animatetop;
-            animation-duration: 0.4s
+            width: 100%;
+            height: 350px;
         }
-
-        /* Add Animation */
-        @keyframes animatetop {
-            from {top: -300px; opacity: 0}
-            to {top: 0; opacity: 1}
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 450px;
+            }
         }
-
-        .close-button {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
+        .section-title {
+            font-size: 2.25rem; /* 3xl */
+            font-weight: 700;
+            color: #1e293b; /* slate-800 */
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-size: 1.125rem; /* xl */
+            color: #64748b; /* slate-500 */
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+        }
+        .content-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
             position: absolute;
-            top: 15px;
-            right: 25px;
+            width: 6px;
+            background-color: #CBD5E1; /* slate-300 */
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
         }
-
-        .close-button:hover,
-        .close-button:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-container.left {
+            left: 0;
+        }
+        .timeline-container.right {
+            left: 50%;
+        }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #4D96FF;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-container.right::after {
+            left: -16px;
+        }
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-container.right {
+                left: 0%;
+            }
+            .timeline-container.left::after, .timeline-container.right::after {
+                left: 15px;
+            }
         }
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <!-- Header Section -->
-    <header class="bg-dark-blue text-white shadow-lg py-8 px-6 md:px-12">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
-            <!-- Logo - Text with Archivo Black font -->
-            <a href="#" class="text-5xl md:text-6xl font-extrabold tracking-wider mb-6 md:mb-0 font-biniyedik text-white">BinYedik</a>
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center my-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-800 mb-4">Algeria's Digital Pulse: 2025 Electronics & Accessory Market</h1>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto">An infographic snapshot of key market dynamics, consumer behaviors, and top product trends shaping Algeria's rapidly evolving e-commerce landscape.</p>
+        </header>
 
-            <!-- Navigation -->
-            <nav class="flex flex-wrap justify-center md:justify-end space-x-4 md:space-x-8 text-lg">
-                <a href="#" class="hover:text-light-blue transition duration-200 rounded-md px-3 py-1">Home</a>
-                <a href="#shop" class="hover:text-light-blue transition duration-200 rounded-md px-3 py-1">Shop</a>
-                <a href="#categories" class="hover:text-light-blue transition duration-200 rounded-md px-3 py-1">Categories</a>
-                <a href="#about" class="hover:text-light-blue transition duration-200 rounded-md px-3 py-1">About Us</a>
-                <a href="#contact" class="hover:text-light-blue transition duration-200 rounded-md px-3 py-1">Contact</a>
-            </nav>
-
-            <!-- Search and Icons -->
-            <div class="flex items-center space-x-4 mt-4 md:mt-0">
-                <div class="relative">
-                    <input type="text" placeholder="Search..." class="py-2 pl-10 pr-4 rounded-full bg-lighter-blue text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-light-blue">
-                    <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-white"></i>
+        <section id="market-overview" class="mb-16">
+            <h2 class="section-title">Market at a Glance: Key Growth Indicators</h2>
+            <p class="section-subtitle">Algeria's digital economy is on a steep upward trajectory, marked by impressive growth and high mobile adoption, setting the stage for a thriving e-commerce ecosystem.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                <div class="kpi-card">
+                    <div class="kpi-value">$799M</div>
+                    <div class="kpi-label">E-commerce Revenue (2024)</div>
                 </div>
-                <a href="#" class="text-white hover:text-light-blue transition duration-200"><i class="fas fa-shopping-cart text-xl"></i></a>
-                <a href="#" class="text-white hover:text-light-blue transition duration-200"><i class="fas fa-user-circle text-xl"></i></a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <!-- Removed rounded-b-3xl -->
-    <section class="bg-gradient-to-r from-medium-blue to-lighter-blue text-white py-20 px-6 md:px-12 shadow-xl">
-        <div class="container mx-auto text-center">
-            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 animate-fade-in-down text-dark-blue">
-                Discover <span class="text-very-light-blue">Your Next Favorite</span> Item
-            </h1>
-            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto opacity-90 animate-fade-in-up text-dark-blue">
-                BinYedik brings you the best of Algerian e-commerce – quality, affordability, and convenience, all in one place.
-            </p>
-            <a href="#shop" class="btn-primary inline-block animate-bounce-in">
-                Shop Now <i class="fas fa-arrow-right ml-2"></i>
-            </a>
-        </div>
-    </section>
-
-    <!-- Featured Products Section -->
-    <section id="shop" class="py-16 px-6 md:px-12 bg-very-light-blue">
-        <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-dark-blue mb-12 text-center">Featured Products</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-
-                <!-- Product Card 1: Wireless Earphones -->
-                <div class="product-card">
-                    <img src="https://placehold.co/600x400/0A64BC/FFFFFF?text=Wireless+Earphones" alt="Wireless Earphones" class="product-card-img">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-dark-blue mb-2 product-name">Hoco EW72 Écouteurs</h3>
-                        <p class="text-gray-600 text-sm mb-4 product-description">ANC Bluetooth 5.4 sans Fil, 90H d'autonomie.</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-medium-blue">2,350 DZD</span>
-                            <button class="bg-lighter-blue text-white px-4 py-2 rounded-full text-sm hover:bg-medium-blue transition duration-200">
-                                <i class="fas fa-plus mr-1"></i> Add to Cart
-                            </button>
-                        </div>
-                        <button class="btn-primary w-full text-sm generate-description-btn" data-product-name="Hoco EW72 Écouteurs" data-product-short-desc="ANC Bluetooth 5.4 sans Fil, 90H d'autonomie.">
-                            ✨ Generate Description
-                        </button>
-                    </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">15-20%</div>
+                    <div class="kpi-label">Projected Annual Growth</div>
                 </div>
-
-                <!-- Product Card 2: Smart Weighing Scale -->
-                <div class="product-card">
-                    <img src="https://placehold.co/600x400/3B83C9/FFFFFF?text=Smart+Scale" alt="Smart Weighing Scale" class="product-card-img">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-dark-blue mb-2 product-name">Pèse personne intelligent</h3>
-                        <p class="text-gray-600 text-sm mb-4 product-description">Balance Connectée Intelligente pour le suivi de votre santé.</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-medium-blue">1,680 DZD</span>
-                            <button class="bg-lighter-blue text-white px-4 py-2 rounded-full text-sm hover:bg-medium-blue transition duration-200">
-                                <i class="fas fa-plus mr-1"></i> Add to Cart
-                            </button>
-                        </div>
-                        <button class="btn-primary w-full text-sm generate-description-btn" data-product-name="Pèse personne intelligent" data-product-short-desc="Balance Connectée Intelligente pour le suivi de votre santé.">
-                            ✨ Generate Description
-                        </button>
-                    </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">112%</div>
+                    <div class="kpi-label">Mobile Phone Penetration</div>
                 </div>
-
-                <!-- Product Card 3: Fast Charge Cable -->
-                <div class="product-card">
-                    <img src="https://placehold.co/600x400/9DC1E4/085096?text=Fast+Charge+Cable" alt="Fast Charge Cable" class="product-card-img">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-dark-blue mb-2 product-name">Hoco X89 USB Cable</h3>
-                        <p class="text-gray-600 text-sm mb-4 product-description">Fast Charge Cable Type-C, durable et fiable.</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-medium-blue">140 DZD</span>
-                            <button class="bg-lighter-blue text-white px-4 py-2 rounded-full text-sm hover:bg-medium-blue transition duration-200">
-                                <i class="fas fa-plus mr-1"></i> Add to Cart
-                            </button>
-                        </div>
-                        <button class="btn-primary w-full text-sm generate-description-btn" data-product-name="Hoco X89 USB Cable" data-product-short-desc="Fast Charge Cable Type-C, durable et fiable.">
-                            ✨ Generate Description
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product Card 4: Men's Boxer Shorts -->
-                <div class="product-card">
-                    <img src="https://placehold.co/600x400/085096/FFFFFF?text=Men's+Boxers" alt="Men's Boxer Shorts" class="product-card-img">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-dark-blue mb-2 product-name">SOFTAY Homme - Calçon</h3>
-                        <p class="text-gray-600 text-sm mb-4 product-description">Confortable et sans sérigraphie, couleur Noir.</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-medium-blue">450 DZD</span>
-                            <button class="bg-lighter-blue text-white px-4 py-2 rounded-full text-sm hover:bg-medium-blue transition duration-200">
-                                <i class="fas fa-plus mr-1"></i> Add to Cart
-                            </button>
-                        </div>
-                        <button class="btn-primary w-full text-sm generate-description-btn" data-product-name="SOFTAY Homme - Calçon" data-product-short-desc="Confortable et sans sérigraphie, couleur Noir.">
-                            ✨ Generate Description
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product Card 5: Werewolf Card Game -->
-                <div class="product-card">
-                    <img src="https://placehold.co/600x400/0A64BC/FFFFFF?text=Werewolf+Game" alt="Werewolf Card Game" class="product-card-img">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-dark-blue mb-2 product-name">Jeu de carte loup garou</h3>
-                        <p class="text-gray-600 text-sm mb-4 product-description">Version arabe, parfait pour les soirées en famille ou entre amis.</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-medium-blue">550 DZD</span>
-                            <button class="bg-lighter-blue text-white px-4 py-2 rounded-full text-sm hover:bg-medium-blue transition duration-200">
-                                <i class="fas fa-plus mr-1"></i> Add to Cart
-                            </button>
-                        </div>
-                        <button class="btn-primary w-full text-sm generate-description-btn" data-product-name="Jeu de carte loup garou" data-product-short-desc="Version arabe, parfait pour les soirées en famille ou entre amis.">
-                            ✨ Generate Description
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product Card 6: Beauty of Joseon Sunscreen -->
-                <div class="product-card">
-                    <img src="https://placehold.co/600x400/3B83C9/FFFFFF?text=Sunscreen" alt="Beauty of Joseon Sunscreen" class="product-card-img">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-dark-blue mb-2 product-name">Beauty of Joseon Sunscreen</h3>
-                        <p class="text-gray-600 text-sm mb-4 product-description">Relief Sun Rice + Probiotics SPF50+ PA++++ 50ml.</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-medium-blue">3,800 DZD</span>
-                            <button class="bg-lighter-blue text-white px-4 py-2 rounded-full text-sm hover:bg-medium-blue transition duration-200">
-                                <i class="fas fa-plus mr-1"></i> Add to Cart
-                            </button>
-                        </div>
-                        <button class="btn-primary w-full text-sm generate-description-btn" data-product-name="Beauty of Joseon Sunscreen" data-product-short-desc="Relief Sun Rice + Probiotics SPF50+ PA++++ 50ml.">
-                            ✨ Generate Description
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product Card 7: Midea Air Conditioner -->
-                <div class="product-card">
-                    <img src="https://placehold.co/600x400/9DC1E4/085096?text=Air+Conditioner" alt="Midea Air Conditioner" class="product-card-img">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-dark-blue mb-2 product-name">Midea KING Climatiseur</h3>
-                        <p class="text-gray-600 text-sm mb-4 product-description">TROPICAL T3 INVERTER SMART WIFI CONTROL 12000 BTU.</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-medium-blue">73,900 DZD</span>
-                            <button class="bg-lighter-blue text-white px-4 py-2 rounded-full text-sm hover:bg-medium-blue transition duration-200">
-                                <i class="fas fa-plus mr-1"></i> Add to Cart
-                            </button>
-                        </div>
-                        <button class="btn-primary w-full text-sm generate-description-btn" data-product-name="Midea KING Climatiseur" data-product-short-desc="TROPICAL T3 INVERTER SMART WIFI CONTROL 12000 BTU.">
-                            ✨ Generate Description
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product Card 8: New Star Pedestal Fan -->
-                <div class="product-card">
-                    <img src="https://placehold.co/600x400/CEEOF2/085096?text=Pedestal+Fan" alt="New Star Pedestal Fan" class="product-card-img">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-dark-blue mb-2 product-name">New Star Ventilateur</h3>
-                        <p class="text-gray-600 text-sm mb-4 product-description">Sur Pied avec trois hélices 16'' 50W 3V.</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-medium-blue">5,250 DZD</span>
-                            <button class="bg-lighter-blue text-white px-4 py-2 rounded-full text-sm hover:bg-medium-blue transition duration-200">
-                                <i class="fas fa-plus mr-1"></i> Add to Cart
-                            </button>
-                        </div>
-                        <button class="btn-primary w-full text-sm generate-description-btn" data-product-name="New Star Ventilateur" data-product-short-desc="Sur Pied avec trois hélices 16'' 50W 3V.">
-                            ✨ Generate Description
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Categories Section -->
-    <!-- Removed rounded-xl -->
-    <section id="categories" class="py-16 px-6 md:px-12 bg-light-blue">
-        <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-dark-blue mb-12 text-center">Explore Our Categories</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                <!-- Category Card 1 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transform transition duration-300 hover:scale-105">
-                    <i class="fas fa-mobile-alt text-5xl text-medium-blue mb-4"></i>
-                    <h3 class="text-xl font-semibold text-dark-blue">Electronics</h3>
-                </div>
-                <!-- Category Card 2 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transform transition duration-300 hover:scale-105">
-                    <i class="fas fa-tshirt text-5xl text-medium-blue mb-4"></i>
-                    <h3 class="text-xl font-semibold text-dark-blue">Fashion</h3>
-                </div>
-                <!-- Category Card 3 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transform transition duration-300 hover:scale-105">
-                    <i class="fas fa-couch text-5xl text-medium-blue mb-4"></i>
-                    <h3 class="text-xl font-semibold text-dark-blue">Home & Living</h3>
-                </div>
-                <!-- Category Card 4 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transform transition duration-300 hover:scale-105">
-                    <i class="fas fa-flask text-5xl text-medium-blue mb-4"></i>
-                    <h3 class="text-xl font-semibold text-dark-blue">Beauty & Care</h3>
-                </div>
-                <!-- Category Card 5 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transform transition duration-300 hover:scale-105">
-                    <i class="fas fa-gamepad text-5xl text-medium-blue mb-4"></i>
-                    <h3 class="text-xl font-semibold text-dark-blue">Hobby & Leisure</h3>
+                <div class="kpi-card">
+                    <div class="kpi-value">90%</div>
+                    <div class="kpi-label">Cash on Delivery (COD) Preference</div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Call to Action / Newsletter Section -->
-    <!-- Removed rounded-xl -->
-    <section class="bg-dark-blue text-white py-16 px-6 md:px-12">
-        <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-6">Stay Updated with BinYedik!</h2>
-            <p class="text-lg mb-8 max-w-2xl mx-auto opacity-90">
-                Subscribe to our newsletter for the latest deals, new arrivals, and exclusive offers.
-            </p>
-            <form class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <input type="email" placeholder="Enter your email address" class="py-3 px-6 rounded-full w-full sm:w-80 bg-lighter-blue text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-light-blue">
-                <button type="submit" class="btn-primary">
-                    Subscribe <i class="fas fa-paper-plane ml-2"></i>
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <!-- About Us Section -->
-    <!-- Removed rounded-xl -->
-    <section id="about" class="py-16 px-6 md:px-12 bg-very-light-blue">
-        <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-bold text-dark-blue mb-8">About BinYedik</h2>
-            <p class="text-gray-700 text-lg max-w-4xl mx-auto leading-relaxed">
-                BinYedik is your premier online shopping destination in Algeria, committed to providing a seamless and enjoyable e-commerce experience. We offer a diverse range of products, from cutting-edge electronics to trendy fashion, all at competitive prices. Our mission is to connect Algerian consumers with quality goods and reliable service, fostering trust and convenience in every transaction. We are dedicated to supporting local businesses and continuously improving our platform to meet your needs.
-            </p>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <!-- Removed rounded-xl -->
-    <section id="contact" class="py-16 px-6 md:px-12 bg-light-blue">
-        <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-bold text-dark-blue mb-8">Get in Touch</h2>
-            <div class="flex flex-col md:flex-row justify-center items-center gap-8">
-                <div class="bg-white rounded-xl shadow-lg p-8 w-full md:w-1/3 text-center">
-                    <i class="fas fa-envelope text-5xl text-medium-blue mb-4"></i>
-                    <h3 class="text-2xl font-semibold text-dark-blue mb-2">Email Us</h3>
-                    <p class="text-gray-700">support@biniyedik.dz</p>
+        </section>
+        
+        <section id="mobile-dominance" class="mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div class="content-card">
+                    <h3 class="text-2xl font-bold text-slate-700 mb-4">Mobile Vendor Market Share</h3>
+                    <p class="text-slate-600 mb-6">The mobile accessory market is directly influenced by the popularity of smartphone brands. Samsung leads the pack, but a diverse ecosystem of brands creates broad demand for a wide range of products.</p>
+                    <div class="chart-container">
+                        <canvas id="marketShareChart"></canvas>
+                    </div>
                 </div>
-                <div class="bg-white rounded-xl shadow-lg p-8 w-full md:w-1/3 text-center">
-                    <i class="fas fa-phone-alt text-5xl text-medium-blue mb-4"></i>
-                    <h3 class="text-2xl font-semibold text-dark-blue mb-2">Call Us</h3>
-                    <p class="text-gray-700">+213 555 123 456</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-lg p-8 w-full md:w-1/3 text-center">
-                    <i class="fas fa-map-marker-alt text-5xl text-medium-blue mb-4"></i>
-                    <h3 class="text-2xl font-semibold text-dark-blue mb-2">Visit Us</h3>
-                    <p class="text-gray-700">123 Commerce St, Algiers, Algeria</p>
+                <div class="content-card">
+                    <h3 class="text-2xl font-bold text-slate-700 mb-4">Top 10 Trending Products</h3>
+                    <p class="text-slate-600 mb-6">Consumer demand focuses on protection, power, and entertainment. Accessories that enhance the mobile experience are the clear front-runners in Algeria's current market.</p>
+                     <div class="chart-container" style="height: 500px;">
+                        <canvas id="topProductsChart"></canvas>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer Section -->
-    <!-- Removed rounded-t-3xl -->
-    <footer class="bg-dark-blue text-white py-10 px-6 md:px-12 shadow-lg">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-            <div class="mb-6 md:mb-0">
-                <h3 class="text-2xl font-bold mb-2">BinYedik</h3>
-                <p class="text-sm opacity-80">&copy; 2024 BinYedik. All rights reserved.</p>
+        <section id="consumer-behavior" class="mb-16">
+             <h2 class="section-title">Understanding the Algerian Consumer</h2>
+             <p class="section-subtitle">Key drivers reveal a consumer base that is practical, value-conscious, and increasingly interested in technology that simplifies and enhances their digital lifestyle.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="content-card col-span-1 md:col-span-1 flex flex-col items-center justify-center text-center">
+                    <div class="text-7xl font-bold text-[#FF6B6B]">90%</div>
+                    <h3 class="text-xl font-semibold mt-2">Prefer Cash on Delivery</h3>
+                    <p class="mt-2 text-slate-600">Trust and the ability to inspect goods before payment remain paramount, making robust logistics and COD options essential for e-commerce success.</p>
+                </div>
+                <div class="content-card md:col-span-2">
+                    <h3 class="text-2xl font-bold text-slate-700 mb-6">Key Purchase Drivers</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="text-xl text-[#4D96FF] mr-4">📱</div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800">High Mobile Usage</h4>
+                                <p class="text-slate-600">With 112% penetration, the mobile phone is the central hub of digital life, driving demand for all related accessories.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                           <div class="text-xl text-[#06D6A0] mr-4">🛡️</div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800">Device Protection</h4>
+                                <p class="text-slate-600">Consumers prioritize safeguarding their smartphone investments with durable cases and screen protectors.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-xl text-[#FFD166] mr-4">⚡️</div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800">Power & Convenience</h4>
+                                <p class="text-slate-600">Demand for fast chargers and high-capacity power banks is fueled by a need for efficiency and uninterrupted use.</p>
+                            </div>
+                        </div>
+                         <div class="flex items-start">
+                            <div class="text-xl text-[#BDB2FF] mr-4">🎨</div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800">Personalization</h4>
+                                <p class="text-slate-600">A growing desire for products that reflect personal style and cultural identity, especially with phone cases.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 mb-6 md:mb-0">
-                <a href="#" class="hover:text-light-blue transition duration-200">Privacy Policy</a>
-                <a href="#" class="hover:text-light-blue transition duration-200">Terms of Service</a>
-                <a href="#" class="hover:text-light-blue transition duration-200">FAQ</a>
-            </div>
-            <div class="flex space-x-6 text-2xl">
-                <a href="#" class="hover:text-light-blue transition duration-200"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="hover:text-light-blue transition duration-200"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="hover:text-light-blue transition duration-200"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="hover:text-light-blue transition duration-200"><i class="fab fa-linkedin"></i></a>
-            </div>
-        </div>
-    </footer>
+        </section>
 
-    <!-- Product Description Modal -->
-    <div id="productDescriptionModal" class="modal">
-        <div class="modal-content bg-white p-8 rounded-xl shadow-2xl relative">
-            <span class="close-button text-gray-500 hover:text-gray-800 text-4xl font-light cursor-pointer">&times;</span>
-            <h3 id="modalProductName" class="text-3xl font-bold text-dark-blue mb-4"></h3>
-            <p id="modalProductDescription" class="text-gray-700 text-lg leading-relaxed"></p>
-            <div id="modalLoadingIndicator" class="hidden text-center mt-4">
-                <i class="fas fa-spinner fa-spin text-medium-blue text-3xl"></i>
-                <p class="text-gray-600 mt-2">Generating description...</p>
+        <section id="future-outlook" class="mb-12">
+            <h2 class="section-title">The Road to 5G and Beyond</h2>
+            <p class="section-subtitle">Government initiatives and infrastructure upgrades are paving the way for a more sophisticated digital future, which will create new opportunities and shift consumer demand.</p>
+            <div class="timeline">
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <h3 class="font-bold text-lg text-slate-800">Now: Digital Transformation Strategy</h3>
+                        <p class="text-sm text-slate-600">Algeria is actively implementing its National Digital Transformation Strategy, aiming to train 500,000 ICT specialists by 2030 and build a robust local tech ecosystem.</p>
+                    </div>
+                </div>
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <h3 class="font-bold text-lg text-slate-800">Mid-2025: 5G Launch</h3>
+                        <p class="text-sm text-slate-600">The official launch of 5G services is set for Q3 2025, starting in major urban and industrial areas. This will unlock new possibilities for high-speed connectivity.</p>
+                    </div>
+                </div>
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <h3 class="font-bold text-lg text-slate-800">Future: Evolving Consumer Demand</h3>
+                        <p class="text-sm text-slate-600">As 5G becomes widespread, expect a surge in demand for 5G-compatible devices, high-performance accessories, and IoT products for a more connected lifestyle.</p>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <footer class="text-center text-slate-500 text-sm py-8">
+            <p>Data sourced from market analysis reports for July 2025. This infographic is for illustrative purposes.</p>
+            <p>Neither Mermaid JS nor SVG were used in the creation of this document.</p>
+        </footer>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const modal = document.getElementById('productDescriptionModal');
-            const closeButton = document.querySelector('.close-button');
-            const modalProductName = document.getElementById('modalProductName');
-            const modalProductDescription = document.getElementById('modalProductDescription');
-            const modalLoadingIndicator = document.getElementById('modalLoadingIndicator');
-            const generateButtons = document.querySelectorAll('.generate-description-btn');
+    document.addEventListener('DOMContentLoaded', function () {
+        const vibrantPalette = ['#4D96FF', '#FF6B6B', '#FFD166', '#06D6A0', '#BDB2FF', '#74C69D', '#F4A261'];
+        const defaultFontOptions = {
+            font: {
+                family: "'Poppins', sans-serif"
+            }
+        };
+        const tooltipConfig = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
 
-            // Function to open the modal
-            const openModal = () => {
-                modal.style.display = 'flex'; // Use flex to center content
-            };
-
-            // Function to close the modal
-            const closeModal = () => {
-                modal.style.display = 'none';
-                modalProductDescription.textContent = ''; // Clear content on close
-                modalProductName.textContent = ''; // Clear product name
-            };
-
-            // Close modal when clicking on the close button
-            closeButton.addEventListener('click', closeModal);
-
-            // Close modal when clicking outside of the modal content
-            window.addEventListener('click', (event) => {
-                if (event.target === modal) {
-                    closeModal();
+        function wrapText(label, maxLength) {
+            if (label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).trim().length > maxLength) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
                 }
             });
+            if (currentLine) {
+                lines.push(currentLine.trim());
+            }
+            return lines;
+        }
 
-            // Add event listeners to all "Generate Description" buttons
-            generateButtons.forEach(button => {
-                button.addEventListener('click', async () => {
-                    const productName = button.dataset.productName;
-                    const productShortDesc = button.dataset.productShortDesc;
-
-                    modalProductName.textContent = productName;
-                    modalProductDescription.textContent = ''; // Clear previous content
-                    modalLoadingIndicator.classList.remove('hidden'); // Show loading indicator
-                    openModal();
-
-                    const prompt = `Generate a compelling and detailed e-commerce product description for "${productName}". The current short description is: "${productShortDesc}". Expand on its features, benefits, and target audience, making it appealing to potential buyers. Keep it concise, around 100-150 words.`;
-
-                    let chatHistory = [];
-                    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
-
-                    const payload = { contents: chatHistory };
-                    const apiKey = ""; // Canvas will automatically provide the API key
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-                    try {
-                        const response = await fetch(apiUrl, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload)
-                        });
-
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        }
-
-                        const result = await response.json();
-
-                        if (result.candidates && result.candidates.length > 0 &&
-                            result.candidates[0].content && result.candidates[0].content.parts &&
-                            result.candidates[0].content.parts.length > 0) {
-                            const generatedText = result.candidates[0].content.parts[0].text;
-                            modalProductDescription.textContent = generatedText;
-                        } else {
-                            modalProductDescription.textContent = 'Failed to generate description. Please try again.';
-                            console.error('Unexpected API response structure:', result);
-                        }
-                    } catch (error) {
-                        modalProductDescription.textContent = 'Error generating description. Please check your network connection or try again later.';
-                        console.error('Error calling Gemini API:', error);
-                    } finally {
-                        modalLoadingIndicator.classList.add('hidden'); // Hide loading indicator
+        // Market Share Doughnut Chart
+        const marketShareCtx = document.getElementById('marketShareChart');
+        if (marketShareCtx) {
+            new Chart(marketShareCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Samsung', 'Xiaomi', 'Oppo', 'Realme', 'Apple', 'Others'],
+                    datasets: [{
+                        label: 'Market Share',
+                        data: [30.05, 20.78, 13.16, 10.3, 8.86, 6.85],
+                        backgroundColor: vibrantPalette,
+                        borderColor: '#ffffff',
+                        borderWidth: 2,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                               ...defaultFontOptions,
+                                padding: 20
+                            }
+                        },
+                        title: {
+                            display: false
+                        },
+                        tooltip: tooltipConfig.plugins.tooltip
                     }
-                });
+                }
             });
-        });
-    </script>
+        }
+        
+        // Top 10 Products Bar Chart
+        const topProductsCtx = document.getElementById('topProductsChart');
+        if (topProductsCtx) {
+            const productLabels = [
+                'Rugged & Personalized Phone Cases', 
+                'Tempered Glass Screen Protectors', 
+                'High-Capacity Power Banks (10,000mAh+)', 
+                'Fast Charging Adapters (45W, 65W, 120W)', 
+                'True Wireless Stereo (TWS) Earbuds', 
+                'Gaming Headsets', 
+                'Smart Trackers (e.g., AirTag)', 
+                'Portable Bluetooth Speakers', 
+                'Android TV Sticks/Smart Boxes (4K)',
+                'USB-C Multi-purpose Cables & Adapters'
+            ];
 
+            new Chart(topProductsCtx, {
+                type: 'bar',
+                data: {
+                    labels: productLabels.map(label => wrapText(label, 20)),
+                    datasets: [{
+                        label: 'Popularity Rank',
+                        data: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+                        backgroundColor: vibrantPalette,
+                        borderColor: vibrantPalette.map(color => color.replace('0.8', '1')),
+                        borderWidth: 1,
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            ticks: { display: false },
+                            grid: { display: false },
+                            title: { display: true, text: 'Relative Popularity →', ...defaultFontOptions }
+                        },
+                        y: {
+                            ticks: { ...defaultFontOptions, font: { size: 10 } },
+                            grid: { display: false }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                         tooltip: {
+                            ...tooltipConfig.plugins.tooltip,
+                            callbacks: {
+                                ...tooltipConfig.plugins.tooltip.callbacks,
+                                label: function(context) {
+                                    return `Rank: ${11 - context.raw}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+    });
+    </script>
 </body>
 </html>
